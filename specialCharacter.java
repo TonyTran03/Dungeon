@@ -24,7 +24,7 @@ public class specialCharacter extends nameCreation {
                                        // the range
             String iv = roller[dice]; // made an instance of the array, selecting a random index [0,4)
             stats.put(iv, stats.get(iv) + 1); // we use .put method again to reassign a new key to the value. This works
-                                              // because "iv" variable shares the same name as the key. In this case,we
+                                              // because "iv" variable shares the same name as the key. In this case, we
                                               // overwrite the previous value (key, value) to be +1
         }
         // stats.put("currentMP", stats.get("MP"));

@@ -35,8 +35,8 @@ public class storyBoard {
 
 		System.out.println(
 				"\"You're not from Rehtta, are you, bud? Got a name?\" \n\n What is your name? (Cannot be changed later)");
-			// created a new object called 'protagonist' to have a name and base stats
-		specialCharacter protagonist = new specialCharacter(scan.nextLine()); 
+		// created a new object called 'protagonist' to have a name and base stats
+		specialCharacter protagonist = new specialCharacter(scan.nextLine());
 		clearScreen();
 		System.out.println("\033[0;33m" + protagonist.getName() + "\033[0m" + " Could you be... Ahhhh! A Slime.");
 		System.out.println("Roll for your stats and fend off the slime\n\nZ. New stats\nX. Done");
@@ -76,14 +76,14 @@ public class storyBoard {
 		whileTrue = true;
 		while (whileTrue == true) {
 			int counter = 0;
-			trigger();
+			counter = trigger();
 			switch (counter) {
 			case 1:
 				System.out.println("You hit your foot off the wall");
 				System.out.println("Empty...");
 				break;
 			case 2:
-				combat.fight(protagonist);
+				combat.fight(protagonist, -999);
 				break;
 			case 3:
 				break;
