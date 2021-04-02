@@ -35,9 +35,8 @@ public class storyBoard {
 
 		System.out.println(
 				"\"You're not from Rehtta, are you, bud? Got a name?\" \n\n What is your name? (Cannot be changed later)");
-		specialCharacter protagonist = new specialCharacter(scan.nextLine()); // created a new object called
-																				// 'protagonist' to have a name and base
-																				// stats
+			// created a new object called 'protagonist' to have a name and base stats
+		specialCharacter protagonist = new specialCharacter(scan.nextLine()); 
 		clearScreen();
 		System.out.println("\033[0;33m" + protagonist.getName() + "\033[0m" + " Could you be... Ahhhh! A Slime.");
 		System.out.println("Roll for your stats and fend off the slime\n\nZ. New stats\nX. Done");
