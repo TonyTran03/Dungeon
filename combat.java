@@ -4,7 +4,7 @@ class combat{
 		creature opponent = new creature(); 
 		
 		//show mana
-		String mana = "■fsa";
+		String mana = "■";
 		String consumed = "▢";
 		System.out.println("You engaged combat with a " + opponent.name);
 		System.out.println(opponent.stats.get("ATTACK"));
