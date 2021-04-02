@@ -1,10 +1,9 @@
-import java.awt.*;
 import java.io.*;
 import java.util.*;
 
 public class storyBoard {
 	public static void startScreen() {
-		Scanner scan = new Scanner(System.in);
+		/*Scanner scan = new Scanner(System.in);
 		try {
 			File plot = new File("story.txt");
 			Scanner plot1 = new Scanner(plot);
@@ -71,24 +70,30 @@ public class storyBoard {
 			}
 
 		}
-		combat.fight(protagonist, 0);
+		*/ 
 
-		whileTrue = true;
-		while (whileTrue == true) {
-			int counter = 0;
-			counter = trigger();
-			switch (counter) {
-			case 1:
-				System.out.println("You hit your foot off the wall");
-				System.out.println("Empty...");
-				break;
-			case 2:
-				combat.fight(protagonist, -999);
-				break;
-			case 3:
-				break;
-			}
-		}
+		specialCharacter protagonist = new specialCharacter("Tony");
+		protagonist.testing();
+		//TODO: remove later ^^^
+		
+		protagonist.engage(0); //first fight is forced to be a slime. Passing in String, int
+
+		boolean path = true;
+		// while (path == true) {
+		// 	int counter = 0;
+		// 	counter = trigger();
+		// 	switch (counter) {
+		// 	case 1:
+		// 		System.out.println("You hit your foot off the wall");
+		// 		System.out.println("Empty...");
+		// 		break;
+		// 	case 2:
+		// 		protagonist.engage (-999);
+		// 		break;
+		// 	case 3:
+		// 		break;
+		// 	}
+		// }
 	}
 
 	private static void clearScreen() {

@@ -7,12 +7,11 @@ class creature {
 	Hashtable<String, Integer> stats = new Hashtable<>(); // creating dictionary
 
 	public creature(int i) {
-		if (i == -999) {
+		if (i == -999) { // i == -999 = random encounter
 			i = ran.nextInt(4);
 		}
 
 		this.name = mob[i];
-
 		switch (i) {
 
 		case (0): // Slime

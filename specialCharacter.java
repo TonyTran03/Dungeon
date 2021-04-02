@@ -2,7 +2,6 @@ import java.util.*;
 
 //this specialCharacer file is creating main characeter
 public class specialCharacter extends nameCreation {
-    String weapon;
     Hashtable<String, Integer> stats = new Hashtable<>(); // creating dictionary
 
     public specialCharacter(String name) {
@@ -15,6 +14,8 @@ public class specialCharacter extends nameCreation {
         stats.put("LUCK", 10);
         stats.put("DEFENCE", 10);
         stats.put("MP", 10);
+        stats.put("EXP", 0);
+        stats.put("Lvl", 1);
 
         Random ran = new Random();
         // this section randomizes the value in each stat
@@ -40,10 +41,57 @@ public class specialCharacter extends nameCreation {
     }
 
     public void printStat() {
+        System.out.println("LVL: " + stats.get("Lvl"));
         System.out.println("HP:  " + stats.get("HP"));
         System.out.println("ATK: " + stats.get("ATTACK"));
         System.out.println("LCK: " + stats.get("LUCK"));
         System.out.println("MP:  " + stats.get("MP"));
         System.out.println("DEF: " + stats.get("DEFENCE"));
     }
+    public void testing() {
+        stats.put("HP", 999); // .put method assigns a key to the value (key, value)
+        stats.put("ATTACK", 999);
+        stats.put("LUCK", 999);
+        stats.put("DEFENCE", 999);
+        stats.put("MP", 999);
+        stats.put("currentMP", stats.get("MP") - 2);
+        stats.put("EXP", 0);
+    }
+
+
+    public void engage(int monster) { //passing in which mosnter we are going to fight 
+
+		creature opponent = new creature(monster); 
+		
+		System.out.println(getName() + " engaged combat with a " + opponent.name + "!");
+
+		System.out.print(this.stats.get("currentMP") + "/" + this.stats.get("MP") + " "); // usedMana/manaCap (visual mana tracker)
+
+
+		for (int i = 0; i < this.stats.get("currentMP"); i++) {
+			System.out.print("■");
+		}
+		for (int i = 0; i < this.stats.get("MP") - this.stats.get("currentMP"); i++) {
+			System.out.print("▢");
+		}
+
+		boolean battle = true;
+		while(battle == true){
+			if(opponent.stats.get("HP") <= 0){
+				battle = false;
+				int totalEXP = this.stats.get("EXP") + opponent.stats.get("EXP");
+				this.stats.put("EXP", totalEXP);
+                System.out.println("You Win!");
+			}
+			else if (this.stats.get("HP") <= 0){
+				battle = false;
+				System.out.println("You Lose");
+			}
+			//battle system
+			else{
+				this.stats.put("HP", this.stats.get("HP") -1); 
+                System.out.println(this.stats.get("HP"));
+			}
+		}
+	}
 }
