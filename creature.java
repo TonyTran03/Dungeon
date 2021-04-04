@@ -16,10 +16,10 @@ class creature {
 
 		case (0): // Slime
 			sprite = "(• w •)";
-			stats.put("HP", 5); // .put method assigns a key to the value (key, value)
+			stats.put("HP", 50); // .put method assigns a key to the value (key, value)
 			stats.put("ATK", 3);
 			stats.put("LCK", 0);
-			stats.put("DEF", 0);
+			stats.put("DEF", 15);
 			stats.put("MP", 0);
 			stats.put("EXP", 3);
 			break;

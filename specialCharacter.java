@@ -1,13 +1,14 @@
 import java.util.*;
-
 //this specialCharacer file is creating main characeter
 public class specialCharacter extends nameCreation {
     Hashtable<String, Integer> stats = new Hashtable<>(); // creating dictionary
+    ArrayList<Spell> spellBook = new ArrayList<>();
+    
 
     public specialCharacter(String name) {
         super(name); // inheritance of name (found in mob.java)
     }
-
+    
     public void statrolls() {
         stats.put("HP", 10); // .put method assigns a key to the value (key, value)
         stats.put("ATK", 10);
@@ -50,7 +51,7 @@ public class specialCharacter extends nameCreation {
     }
     public void testing() {
         stats.put("HP", 999); // .put method assigns a key to the value (key, value)
-        stats.put("ATK", 999);
+        stats.put("ATK", 20);
         stats.put("LCK", 999);
         stats.put("DEF", 999);
         stats.put("MP", 999);
@@ -59,51 +60,58 @@ public class specialCharacter extends nameCreation {
     }
 
 
-    public void engage(int monster) { //passing in which mosnter we are going to fight 
+    public boolean engage(int monster) { //passing in which mosnter we are going to fight 
 
 		creature opponent = new creature(monster); 
 		storyBoard.clearScreen();
         System.out.println(getName() + " engaged combat with a " + opponent.name + "!");
 		System.out.println(opponent.name+ " ———————————— " +  opponent.sprite);
-        
+        System.out.println(opponent.stats.get("HP") );
 
         //print out mana visual
-        System.out.print(this.stats.get("currentMP") + "/" + this.stats.get("MP") + " "); 
+        System.out.print("Mana: " + this.stats.get("currentMP") + "/" + this.stats.get("MP") + " "); 
 		for (int i = 0; i < this.stats.get("currentMP"); i++) {
 			System.out.print("■");
 		}for (int i = 0; i < this.stats.get("MP") - this.stats.get("currentMP"); i++) {
 			System.out.print("▢");
 		}
 
-
+        
+        
+        boolean notLose = true;
 		boolean battle = true;
 		while(battle == true){
+            int totalDamage = (this.stats.get("ATK")*6)/5 - opponent.stats.get("DEF");  // Damage calculator —> 20% modifier on attack 
 			if(opponent.stats.get("HP") <= 0){
 				battle = false;
-				int totalEXP = this.stats.get("EXP") + opponent.stats.get("EXP");
+                int totalEXP = this.stats.get("EXP") + opponent.stats.get("EXP");
 				this.stats.put("EXP", totalEXP);
                 System.out.println("You Win!");
+                notLose = true;
 			}
 			else if (this.stats.get("HP") <= 0){
 				battle = false;
 				System.out.println("You Lose");
+                notLose = false;
 			}
 			//battle system
 			else{
                 Scanner scan = new Scanner(System.in);
-                System.out.println("\n 1. Attack \n 2. Use Spell \n 3. Use Item \n 4. Run Away");
+                System.out.println("\n 1. Attack —>"+ totalDamage +"\n 2. Use Spell \n 3. Use Item \n 4. Run Away");
                 int attack = scan.nextInt();
                 switch(attack){
                     case 1: 
 
-                   int totalDamage = this.stats.get("ATK") - (opponent.stats.get("DEF")/2);  
-                   
-                    opponent.stats.put("HP", opponent.stats.get("HP") - totalDamage);
+
+                    opponent.stats.put("HP", opponent.stats.get("HP") - totalDamage); //calculates total damage done to enemy
+                    // System.out.println(totalDamage);
+                    // System.out.println(opponent.stats.get("HP"));
+                    
                     break;
                     
 
                     case 2:
-                        //Use a spell
+                        
         
                     case 3: 
                         //use item
@@ -112,8 +120,11 @@ public class specialCharacter extends nameCreation {
 
                     default: storyBoard.clearScreen();
                     System.out.println("\n 1. Attack \n 2. Use Spell \n 3. Use Item \n 4. Run Away");
+                    
                 }
+               
 			}
 		}
+        return notLose;
 	}
 }

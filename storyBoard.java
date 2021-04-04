@@ -76,7 +76,14 @@ public class storyBoard {
 		protagonist.testing();
 		//TODO: remove later ^^^
 		
-		protagonist.engage(0); //first fight is forced to be a slime. Passing in String, int
+		boolean notLose = true;
+		if(notLose == true){
+			notLose = protagonist.engage(0); //first fight is forced to be a slime. Passing in String, int
+		}
+		else{
+			Main.main(new String[2]);
+		}
+		
 
 		boolean path = true;
 		// while (path == true) {
