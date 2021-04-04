@@ -10,16 +10,16 @@ public class specialCharacter extends nameCreation {
 
     public void statrolls() {
         stats.put("HP", 10); // .put method assigns a key to the value (key, value)
-        stats.put("ATTACK", 10);
-        stats.put("LUCK", 10);
-        stats.put("DEFENCE", 10);
+        stats.put("ATK", 10);
+        stats.put("LCK", 10);
+        stats.put("DEF", 10);
         stats.put("MP", 10);
         stats.put("EXP", 0);
         stats.put("Lvl", 1);
 
         Random ran = new Random();
         // this section randomizes the value in each stat
-        String[] roller = { "ATTACK", "LUCK", "DEFENCE", "MP" };
+        String[] roller = { "ATK", "LCK", "DEF", "MP" };
         for (int i = 0; i < 22; i++) { // points generator
             int dice = ran.nextInt(4); // .nextInt is inclusive of 0 but exclusive of value- pick a random number in
                                        // the range
@@ -34,25 +34,25 @@ public class specialCharacter extends nameCreation {
 
     // .get method gets the value using the key from the dictionary
     public void printStatReroll() {
-        System.out.println("ATK: 10 → " + stats.get("ATTACK"));
-        System.out.println("Lck: 10 → " + stats.get("LUCK"));
+        System.out.println("ATK: 10 → " + stats.get("ATK"));
+        System.out.println("LCK: 10 → " + stats.get("LCK"));
         System.out.println("MP:  10 → " + stats.get("MP"));
-        System.out.println("DEF: 10 → " + stats.get("DEFENCE"));
+        System.out.println("DEF: 10 → " + stats.get("DEF"));
     }
 
     public void printStat() {
         System.out.println("LVL: " + stats.get("Lvl"));
         System.out.println("HP:  " + stats.get("HP"));
-        System.out.println("ATK: " + stats.get("ATTACK"));
-        System.out.println("LCK: " + stats.get("LUCK"));
+        System.out.println("ATK: " + stats.get("ATK"));
+        System.out.println("LCK: " + stats.get("LCK"));
         System.out.println("MP:  " + stats.get("MP"));
-        System.out.println("DEF: " + stats.get("DEFENCE"));
+        System.out.println("DEF: " + stats.get("DEF"));
     }
     public void testing() {
         stats.put("HP", 999); // .put method assigns a key to the value (key, value)
-        stats.put("ATTACK", 999);
-        stats.put("LUCK", 999);
-        stats.put("DEFENCE", 999);
+        stats.put("ATK", 999);
+        stats.put("LCK", 999);
+        stats.put("DEF", 999);
         stats.put("MP", 999);
         stats.put("currentMP", stats.get("MP") - 2);
         stats.put("EXP", 0);
@@ -62,18 +62,19 @@ public class specialCharacter extends nameCreation {
     public void engage(int monster) { //passing in which mosnter we are going to fight 
 
 		creature opponent = new creature(monster); 
-		
-		System.out.println(getName() + " engaged combat with a " + opponent.name + "!");
+		storyBoard.clearScreen();
+        System.out.println(getName() + " engaged combat with a " + opponent.name + "!");
+		System.out.println(opponent.name+ " ———————————— " +  opponent.sprite);
+        
 
-		System.out.print(this.stats.get("currentMP") + "/" + this.stats.get("MP") + " "); // usedMana/manaCap (visual mana tracker)
-
-
+        //print out mana visual
+        System.out.print(this.stats.get("currentMP") + "/" + this.stats.get("MP") + " "); 
 		for (int i = 0; i < this.stats.get("currentMP"); i++) {
 			System.out.print("■");
-		}
-		for (int i = 0; i < this.stats.get("MP") - this.stats.get("currentMP"); i++) {
+		}for (int i = 0; i < this.stats.get("MP") - this.stats.get("currentMP"); i++) {
 			System.out.print("▢");
 		}
+
 
 		boolean battle = true;
 		while(battle == true){
@@ -89,8 +90,29 @@ public class specialCharacter extends nameCreation {
 			}
 			//battle system
 			else{
-				this.stats.put("HP", this.stats.get("HP") -1); 
-                System.out.println(this.stats.get("HP"));
+                Scanner scan = new Scanner(System.in);
+                System.out.println("\n 1. Attack \n 2. Use Spell \n 3. Use Item \n 4. Run Away");
+                int attack = scan.nextInt();
+                switch(attack){
+                    case 1: 
+
+                   int totalDamage = this.stats.get("ATK") - (opponent.stats.get("DEF")/2);  
+                   
+                    opponent.stats.put("HP", opponent.stats.get("HP") - totalDamage);
+                    break;
+                    
+
+                    case 2:
+                        //Use a spell
+        
+                    case 3: 
+                        //use item
+                    case 4:
+                    //run away
+
+                    default: storyBoard.clearScreen();
+                    System.out.println("\n 1. Attack \n 2. Use Spell \n 3. Use Item \n 4. Run Away");
+                }
 			}
 		}
 	}
