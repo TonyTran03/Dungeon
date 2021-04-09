@@ -53,7 +53,7 @@ public class storyBoard {
 
 			} else if (temp == 'X') {
 				clearScreen();
-				System.out.println("\033[0;33m" + protagonist.name+ "\033[0m");
+				System.out.println("\033[0;33m" + protagonist.name + "\033[0m");
 				protagonist.printStat();
 				whileTrue = false;
 				System.out.println("\nStats saved!");
@@ -70,36 +70,34 @@ public class storyBoard {
 			}
 
 		}
-	
 
 		// specialCharacter protagonist = new specialCharacter("Tony");
 		// protagonist.testing();
-		//TODO: remove later ^^^
-		
+		// TODO: remove later ^^^
+
 		boolean notLose = true;
-		if(notLose == true){
-			notLose = protagonist.engage(0); //first fight is forced to be a slime. Passing in String, int
-		}
-		else{
+		if (notLose == true) {
+			notLose = protagonist.engage(0); // first fight is forced to be a slime. Passing in String, int
+		} else {
 			Main.main(new String[2]);
 		}
 		clearScreen();
-		System.out.println("Thank you for saving me! You're one you're own\n"); //TODO FIX PLOT LOL
-	
+		System.out.println("Thank you for saving me! You're one you're own\n"); // TODO FIX PLOT LOL
+
 		try {
-			Thread.sleep(2000); //wait 2 seconds
+			Thread.sleep(2000); // wait 2 seconds
 		} catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
 		}
 		boolean path = true;
 		while (path == true) {
-		clearScreen();
-	
-		System.out.println("\033[0;33m" + protagonist.name+ "\033[0m");
-		protagonist.printStat(); //display users stats before venturing
-		System.out.println("x. Explore");
-		scan = new Scanner(System.in);
-		String stalls = scan.nextLine();
+			clearScreen();
+
+			System.out.println("\033[0;33m" + protagonist.name + "\033[0m");
+			protagonist.printStat(); // display users stats before venturing
+			System.out.println("x. Explore");
+			scan = new Scanner(System.in);
+			String stalls = scan.nextLine();
 
 			int counter = 0;
 			counter = trigger();
@@ -109,17 +107,18 @@ public class storyBoard {
 				System.out.println("Empty...");
 				break;
 			case 2:
-				protagonist.engage (-999); //fight random enemy from creature class
+				protagonist.engage(-999); // fight random enemy from creature class
 				break;
 			case 3:
 				System.out.println("There will be new spells to Learn in the future");
-				break;		
+				break;
 			case 4:
-				protagonist.engage (4); //fight boss
+				protagonist.engage(4); // fight boss
 				break;
 			}
 
 		}
+		System.out.println("You Beat []!");
 	}
 
 	// while loop this to keep triggering events
@@ -128,22 +127,22 @@ public class storyBoard {
 		int counter = 0;
 		int encounter = ran.nextInt(100);
 
-		
 		if ((encounter >= 0) && (encounter <= 10)) {// do nothing (10%)
 			counter = 1;
 		}
-	
-		else if ((encounter > 10) && (encounter <= 75)) {	// fight a monster(65%)
+
+		else if ((encounter > 10) && (encounter <= 75)) { // fight a monster(65%)
 			counter = 2;
-			
-		}else if ((encounter > 75) && (encounter < 80)) {// find a chest (5%)
+
+		} else if ((encounter > 75) && (encounter < 80)) {// find a chest (5%)
 			counter = 3;
-			
+
 		} else {
 			counter = 4; // boss(20%) -> Demo purpose. Running is an option because of the demo.
 		}
 		return counter;
 	}
+
 	public static void clearScreen() {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();

@@ -6,6 +6,7 @@ class creature {
 	String name;
 	Hashtable<String, Integer> stats = new Hashtable<>(); // creating dictionary
 	String sprite;
+
 	public creature(int i) {
 		if (i == -999) { // i == -999 = random encounter
 			i = ran.nextInt(4);
@@ -53,8 +54,8 @@ class creature {
 			stats.put("MP", 0);
 			stats.put("EXP", 0);
 			break;
-			
-			case (4): // Big Baddie
+
+		case (4): // Big Baddie
 			stats.put("HP", 100); // .put method assigns a key to the value (key, value)
 			stats.put("currentHP", stats.get("HP"));
 			stats.put("ATK", 300);
