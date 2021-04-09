@@ -16,7 +16,8 @@ class creature {
 
 		case (0): // Slime
 			sprite = "(• w •)";
-			stats.put("HP", 50); // .put method assigns a key to the value (key, value)
+			stats.put("HP", 30); // .put method assigns a key to the value (key, value)
+			stats.put("currentHP", stats.get("HP"));
 			stats.put("ATK", 3);
 			stats.put("LCK", 0);
 			stats.put("DEF", 15);
@@ -26,6 +27,7 @@ class creature {
 		case (1): // Camel
 			sprite = "/^—^\\(•-•)";
 			stats.put("HP", 5); // .put method assigns a key to the value (key, value)
+			stats.put("currentHP", stats.get("HP"));
 			stats.put("ATK", 5);
 			stats.put("LCK", 0);
 			stats.put("DEF", 3);
@@ -35,6 +37,7 @@ class creature {
 		case (2): // Helicopter
 			sprite = " ([] L)";
 			stats.put("HP", 20); // .put method assigns a key to the value (key, value)
+			stats.put("currentHP", stats.get("HP"));
 			stats.put("ATK", 0);
 			stats.put("LCK", 0);
 			stats.put("DEF", 15);
@@ -43,6 +46,7 @@ class creature {
 			break;
 		case (3): // Policeman
 			stats.put("HP", 10); // .put method assigns a key to the value (key, value)
+			stats.put("currentHP", stats.get("HP"));
 			stats.put("ATK", 100);
 			stats.put("LCK", 100);
 			stats.put("DEF", 15);
